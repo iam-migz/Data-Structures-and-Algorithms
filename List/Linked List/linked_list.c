@@ -34,6 +34,24 @@ void insert_after(NodePtr *L, int data, int after) {
         (*L)->next = temp;
     }
 }
+void insert_before(NodePtr *L, int data, int before) {
+    for (;*L != NULL && (*L)->data != before; L = &(*L)->next) {}
+    NodePtr temp = malloc(sizeof(NodeType));
+    if (temp != NULL) {
+        temp->data = data;
+        temp->next = *L;
+        *L = temp;
+    }
+}
+void insert_sorted(NodePtr *L, int data) { /* Ascending */
+    for (;*L != NULL && data > (*L)->data; L = &(*L)->next) {}
+    NodePtr temp = malloc(sizeof(NodeType));
+    if (temp != NULL) {
+        temp->data = data;
+        temp->next = *L;
+        *L = temp;
+    }
+}
 void delete(NodePtr *L, int data) {
     for (;*L != NULL && (*L)->data != data; L = &(*L)->next){}
     if (*L != NULL) {
