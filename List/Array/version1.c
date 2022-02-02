@@ -4,7 +4,8 @@ Version 1:  List is a structure containing an array of
 */
 
 #include <stdio.h>
-#include "helper.h"
+#include "../../Utils/array.h"
+
 #define MAX 10
 
 typedef struct {

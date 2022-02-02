@@ -1,5 +1,5 @@
-#ifndef LINKHELPER_H
-#define LINKHELPER_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
 typedef struct node {
     int data;

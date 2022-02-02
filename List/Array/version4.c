@@ -5,7 +5,7 @@ containing a pointer to a dynamic array and count/last
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "helper.h"
+#include "../../Utils/array.h"
 
 typedef struct {
     int *elements;

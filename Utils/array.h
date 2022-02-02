@@ -1,5 +1,5 @@
-#ifndef HELPER_H
-#define HELPER_H
+#ifndef ARRAY_H
+#define ARRAY_H
 
 void display(int elements[], int count) {
     for (int i = 0; i < count; i++) {
