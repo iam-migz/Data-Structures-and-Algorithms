@@ -56,13 +56,49 @@ void reverse(NodePtr *L) {
     *L = slow;
 }
 
+/*
+Function changeLetter(): Given a list and 2 letters A and B, as parameters. The
+    function will replace all occurrences of a given A to a given letter B. In addition,
+    the function will return to the calling function total number of changes in the
+    function.
+*/ 
+int changeNumber(NodePtr L, int a, int b) {
+    int count = 0;
+
+    for (;L != NULL; L = L->next) {
+        if (L->data == a) {
+            L->data = b;
+            count++;
+        }
+    }
+    return count;
+}
+
+/*
+    Bubble sort a linked list
+*/ 
+void sort_ll(NodePtr L) {
+    for (NodePtr first = L; first != NULL; first = first->next) {
+        for (NodePtr second = first->next; second != NULL; second = second->next) {
+            if (first->data > second->data) {
+                int temp = first->data;
+                first->data = second->data;
+                second->data = temp;
+            }
+        }
+    }
+}
+
 
 int main() {
 
     NodePtr L = NULL;
-    int elements[] = {1,1,2,1,3,1,1};
+    int elements[] = {2, 1, 3, 6, 5, 4, 7};
     populate_list(&L, elements, 7);
-    NodePtr evens = get_even(&L);
+
+ 
+    sort_ll(L);
+    display(L);
     make_null(&L);
     
     return 0;
