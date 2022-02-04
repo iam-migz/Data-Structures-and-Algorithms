@@ -13,6 +13,7 @@ void display(NodePtr L) {
             printf(", ");
         }
     }
+    printf("\n");
 }
 void make_null(NodePtr *L) {
     NodePtr temp;
