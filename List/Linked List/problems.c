@@ -9,96 +9,79 @@ typedef struct node {
 } NodeType, *NodePtr;
 */
 
-/* 
-    Get Even: returns all the even numbers as a list and removes it from the original list,
-                remaining only odd numbers.
-*/
-NodePtr get_even(NodePtr *L) {
-    NodePtr evens, temp;
-    evens = NULL;
-    while(*L) {
-        if ((*L)->data % 2 == 0) {
-            temp = *L;
-            *L = (*L)->next;
-            temp->next = evens;
-            evens = temp;
-        } else {
-            L = &(*L)->next;
-        }
-    } 
-    return evens;
-}
-/* delete all occurence of an element in the list */
-void delete_all_occurence(NodePtr *L, int data) {
-    NodePtr temp;
-    while (*L) {
-        if (data == (*L)->data) {
-            temp = *L;
-            *L = (*L)->next;
-            free(temp);
-        } else {
-            L = &(*L)->next;
-        }
+/* 1. Print in Reverse */
+void print_reverse(NodePtr L) {
+    if (L != NULL) {
+        print_reverse(L->next);
+        printf("%d ", L->data);
     }
 }
-/* reverse linked list */
-void reverse(NodePtr *L) {
-    NodePtr trav, slow, fast;
+
+/* 2. Find the middle node */ 
+NodePtr find_middle(NodePtr L) {
+    NodePtr fast, slow;
+    fast = slow = L;
+    while (fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+} 
+
+/* 3. Reverse a linked list */ 
+void reverse_ll(NodePtr *L) {
+    NodePtr trav, front, back;
     trav = *L;
-    slow = NULL;
-
+    back = NULL;
     while (trav) {
-        fast = trav->next;
-        trav->next = slow;
-        slow = trav;
-        trav = fast;
+        front = trav->next;
+        trav->next = back;
+        back = trav;
+        trav = front;
     }
-    *L = slow;
+    *L = back;
 }
 
-/*
-Function changeLetter(): Given a list and 2 letters A and B, as parameters. The
-    function will replace all occurrences of a given A to a given letter B. In addition,
-    the function will return to the calling function total number of changes in the
-    function.
-*/ 
-int changeNumber(NodePtr L, int a, int b) {
-    int count = 0;
+/* 4. Merge two list into a sorted list, assume both list already sorted, "Union" */ 
+NodePtr merge_lists(NodePtr A, NodePtr B) {
+    NodePtr merge, *trav;
+    trav = &merge;
 
-    for (;L != NULL; L = L->next) {
-        if (L->data == a) {
-            L->data = b;
-            count++;
+    while (A && B) {
+        if (A->data < B->data) {
+            *trav = A;
+            trav = &A->next;
+            A = A->next;
+        } else {
+            *trav = B;
+            trav = &B->next;
+            B = B->next;
         }
     }
-    return count;
-}
-
-/*
-    Bubble sort a linked list
-*/ 
-void sort_ll(NodePtr L) {
-    for (NodePtr first = L; first != NULL; first = first->next) {
-        for (NodePtr second = first->next; second != NULL; second = second->next) {
-            if (first->data > second->data) {
-                int temp = first->data;
-                first->data = second->data;
-                second->data = temp;
-            }
-        }
+    if (A == NULL) {
+        A = B;
     }
+    while (A) {
+        *trav = A;
+        trav = &A->next;
+        A = A->next;
+    }
+    return merge;    
 }
-
 
 int main() {
 
     NodePtr L = NULL;
-    int elements[] = {2, 1, 3, 6, 5, 4, 7};
-    populate_list(&L, elements, 7);
+    NodePtr B = NULL;
 
- 
-    sort_ll(L);
-    display(L);
+    int elements[] = {1, 3, 5};
+    int elements2[] = {2, 4, 6};
+    populate_list(&L, elements, 3);
+    populate_list(&B, elements2, 3);
+    NodePtr merge = merge_lists(L, B);    
+    L = NULL;
+    B = NULL;
+    display(merge);
     make_null(&L);
     
     return 0;
