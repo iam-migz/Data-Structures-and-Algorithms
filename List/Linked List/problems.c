@@ -9,6 +9,8 @@ typedef struct node {
 } NodeType, *NodePtr;
 */
 
+/* problems found on the internet */ 
+
 /* 1. Print in Reverse */
 void print_reverse(NodePtr L) {
     if (L != NULL) {
