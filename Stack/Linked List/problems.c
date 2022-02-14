@@ -1,14 +1,13 @@
 #include <stdio.h>
-#include "stack_array.h"
+#include <stdlib.h>
+#include "stack_ll.h"
 
 /*
-#define MAX 10
-typedef struct {
-    int data[MAX];
-    int top;
-} Stack;
+typedef struct node{
+    int data;
+    struct node *next;
+} NodeType, *Stack;
 */
-
 
 int main() {
 
@@ -16,8 +15,9 @@ int main() {
     init_stack(&S);
     int sample[] = {1,2,3,4,5};
     populate_stack(&S, sample, 5);
-
-    display_and_delete(&S);
     
+    display_and_delete_all(&S);
+
+
     return 0;
 }

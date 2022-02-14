@@ -29,7 +29,7 @@ void pop(Stack *S) {
     }
 }
 
-void display_and_delete(Stack *S) {
+void display_and_delete_all(Stack *S) {
     while (S->top != -1) {
         printf("%d ", top(*S));
         pop(S);
