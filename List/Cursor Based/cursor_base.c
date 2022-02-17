@@ -31,6 +31,17 @@ void insert_last(Vheap *vh, int *list, int elem) {
         *list = index;
     }
 }
+void insert_sorted_unique(Vheap *vh, int *list, int elem) { //asc
+    for (;*list != -1 && elem > vh->elements[*list].elem; list = &vh->elements[*list].next){}
+    if (*list == -1 || elem != vh->elements[*list].elem) {
+        int index = allocate_space(vh);
+        if (index != -1) {
+            vh->elements[index].elem = elem;
+            vh->elements[index].next = *list;
+            *list = index;
+        }
+    }
+}
 void delete_first(Vheap *vh, int *list) {
     if (*list != -1) {
         int temp = *list;
