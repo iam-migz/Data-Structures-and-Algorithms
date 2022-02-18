@@ -84,12 +84,13 @@ int higher_precedence(char old_op, char new_op) {
     return operator_precedence(old_op) >= operator_precedence(new_op) ? 1 : 0;
 }
 
-
 char* infix_to_postfix(char *str) {
     
-    int i, j;
-    char *postfix = (char*)malloc((strlen(str)+1) * sizeof(char));
+    char *postfix;
     Stack S; 
+    int i, j;
+
+    postfix = (char*)malloc((strlen(str)+1) * sizeof(char));
     init_stack(&S);
     j = 0;
 
@@ -97,7 +98,7 @@ char* infix_to_postfix(char *str) {
         if (isdigit(str[i])) {
             postfix[j++] = str[i];        
         } else {
-            while (S.top != -1 && higher_precedence(top(S), str[i])) { 
+            while (!is_empty(S) && higher_precedence(top(S), str[i])) { 
                 postfix[j++] = top(S);
                 pop(&S);
             }
@@ -105,7 +106,7 @@ char* infix_to_postfix(char *str) {
         }
     }
 
-    while (S.top != -1) {
+    while (!is_empty(S)) {
         postfix[j++] = top(S);
         pop(&S);
     }
