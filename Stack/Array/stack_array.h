@@ -29,6 +29,10 @@ void pop(Stack *S) {
     }
 }
 
+int is_empty(Stack S) {
+    return S.top == -1 ? 0 : 1;
+}
+
 void display_and_delete_all(Stack *S) {
     while (S->top != -1) {
         printf("%d ", top(*S));
