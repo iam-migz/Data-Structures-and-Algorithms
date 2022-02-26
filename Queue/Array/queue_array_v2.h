@@ -34,6 +34,7 @@ void enqueue(Queue *q, int data) {
 
 int dequeue(Queue *q) {
     if (!isEmpty(*q)) {
+        q->array[q->front] = -1;
         q->front = (q->front + 1)  % SIZE;
     }
 }

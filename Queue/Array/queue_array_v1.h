@@ -12,8 +12,8 @@ typedef struct {
 } Queue;
 
 void init_queue(Queue *q) {
-    q->front = 1;
-    q->back = 0;
+    q->front = 0;
+    q->back = SIZE-1;
     q->count = 0;
 }
 
@@ -27,7 +27,8 @@ int isEmpty(Queue q) {
 
 void enqueue(Queue *q, int data) {
     if (!isFull(*q)) {
-        q->back++;
+        q->back = (q->back + 1) % SIZE;
+        q->count++;
         q->array[q->back] = data;
     }
 }
@@ -35,8 +36,9 @@ void enqueue(Queue *q, int data) {
 int dequeue(Queue *q) {
     int temp = -1;
     if (!isEmpty(*q)) {
-        temp = q->array[q->back];
-        q->back--;
+        q->array[q->front] = -1;
+        temp = q->array[q->front];
+        q->front = (q->front + 1) % SIZE;
     }
     return temp;
 }
