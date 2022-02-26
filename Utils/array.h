@@ -20,12 +20,11 @@ void visualize_array(int elements[], int count) {
     printf("\n");
 }
 
-
-void display_array_list(int elements[], int count, int start_index, int end_index) {
+void display_array_list(int elements[], int start_index, int end_index) {
     printf("[");
-    for (int i = start_index; i < count && i < end_index; i++) {
+    for (int i = start_index; i <= end_index; i++) {
         printf("%d", elements[i]);
-        if (i+1 != count && i+1 != end_index) {
+        if (i != end_index) {
             printf(", ");
         }
     }
