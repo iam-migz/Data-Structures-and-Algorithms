@@ -48,11 +48,5 @@ void delete(List *L, int index) {
 
 int main() {
 
-    List L;
-    init(&L);
-    for (int i = 0; i < 10; i += 2)
-        insert_at(&L, i, L.count);
-    insert_sorted(&L, 5);
-    display(L.elements, L.count);
     return 0;
 }

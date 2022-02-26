@@ -52,16 +52,5 @@ void make_null(List **L) {
 
 int main() {
 
-    List *L;
-    init(&L);
-    for (int i = 0; i < 10; i += 2)
-        insert_at(&L, i, L->count);
-
-    insert_sorted(&L, 5);
-    delete(&L, 3);
-    display(L->elements, L->count);
-
-
-    make_null(&L);
     return 0;
 }
