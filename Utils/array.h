@@ -1,13 +1,35 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-void display(int elements[], int count) {
+void initialize_array(int elements[], int count) {
     for (int i = 0; i < count; i++) {
+        elements[i] = -1;
+    }
+}
+
+void visualize_array(int elements[], int count) {
+    printf("INDX:");
+    for (int i = 0; i < count; i++) {
+        printf("%4d", i);
+    }
+    printf("\n");
+    printf("DATA:");
+    for (int i = 0; i < count; i++) {
+        printf("%4d", elements[i]);
+    }
+    printf("\n");
+}
+
+
+void display_array_list(int elements[], int count, int start_index, int end_index) {
+    printf("[");
+    for (int i = start_index; i < count && i < end_index; i++) {
         printf("%d", elements[i]);
-        if (i+1 != count) {
+        if (i+1 != count && i+1 != end_index) {
             printf(", ");
         }
     }
+    printf("]");
     printf("\n");
 }
 
