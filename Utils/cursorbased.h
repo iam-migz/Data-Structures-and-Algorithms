@@ -14,7 +14,7 @@ typedef struct {
 } Vheap;
 
 /* Cursor Based Utility Functions */ 
-void init(Vheap *vh) {
+void cb_init(Vheap *vh) {
     int i;
     for (i = 0; i < MAX; i++) {
         vh->elements[i].elem = -1;
@@ -22,28 +22,28 @@ void init(Vheap *vh) {
     }
     vh->avail = MAX-1;
 }
-int allocate_space(Vheap *vh) {
+int cb_allocate_space(Vheap *vh) {
     int index = vh->avail;
     if (index != -1) {
         vh->avail = vh->elements[vh->avail].next;
     }
     return index;
 }   
-int deallocate_space(Vheap *vh, int index) {
+int cb_deallocate_space(Vheap *vh, int index) {
     if (index >= 0 && index < MAX) {
         vh->elements[index].elem = -1;
         vh->elements[index].next = vh->avail;
         vh->avail = index;
     }
 }
-void visualize(Vheap vh) {
+void cb_visualize(Vheap vh) {
     printf("index \t elem \t next\n");
     for (int i = 0; i < MAX; i++) {
         printf("%5d \t %5d \t %5d\n", i, vh.elements[i].elem, vh.elements[i].next);
     }
     printf("avail: %d\n", vh.avail);
 }
-void display_list(Vheap vh, int list) {
+void cb_display_list(Vheap vh, int list) {
     printf("list start @ index: %d. \t", list);
     printf("[");
     for (int i = list; i != -1; i = vh.elements[i].next) {
@@ -55,7 +55,7 @@ void display_list(Vheap vh, int list) {
     printf("]");
     printf("\n");
 }
-void populate_list(Vheap *vh, int *list, int array[], int array_size) {
+void cb_populate_list(Vheap *vh, int *list, int array[], int array_size) {
     int temp;
     for (int i = 0; i < array_size; i++) {
         *list = allocate_space(vh);
