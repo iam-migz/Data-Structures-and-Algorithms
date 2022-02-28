@@ -63,14 +63,5 @@ void delete(NodePtr *L, int data) {
 
 int main() {
 
-    NodePtr L = NULL;
-    insert_first(&L, 4);
-    insert_first(&L, 2);
-    insert_last(&L, 6);
-    insert_after(&L, 5, 4);
-    delete(&L, 5);
-    display(L);
-    make_null(&L);
-
     return 0;
 }

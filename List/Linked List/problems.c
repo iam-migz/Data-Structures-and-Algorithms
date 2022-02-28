@@ -73,18 +73,5 @@ NodePtr merge_lists(NodePtr A, NodePtr B) {
 
 int main() {
 
-    NodePtr L = NULL;
-    NodePtr B = NULL;
-
-    int elements[] = {1, 3, 5};
-    int elements2[] = {2, 4, 6};
-    populate_list(&L, elements, 3);
-    populate_list(&B, elements2, 3);
-    NodePtr merge = merge_lists(L, B);    
-    L = NULL;
-    B = NULL;
-    display(merge);
-    make_null(&L);
-    
     return 0;
 }

@@ -58,7 +58,7 @@ void cb_display_list(Vheap vh, int list) {
 void cb_populate_list(Vheap *vh, int *list, int array[], int array_size) {
     int temp;
     for (int i = 0; i < array_size; i++) {
-        *list = allocate_space(vh);
+        *list = cb_allocate_space(vh);
         vh->elements[*list].elem = array[i];
         vh->elements[*list].next = -1;
         list = &vh->elements[*list].next;

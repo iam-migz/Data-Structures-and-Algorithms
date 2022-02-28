@@ -110,18 +110,6 @@ void sort_ll(NodePtr L) {
 
 
 int main() {
-
-    NodePtr L = NULL;
-    int elements[] = {7, 1, 3, 9, 5, 2, 4, 6, 10, 8};
-    populate_list(&L, elements, 10);
-    
-    NodePtr evens = get_even_v2(&L);
- 
-    display(L);
-    display(evens);
-
-    make_null(&L);
-    make_null(&evens);
     
     return 0;
 }
