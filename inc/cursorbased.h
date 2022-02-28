@@ -1,5 +1,5 @@
-#ifndef CURSORBASED_HELPER_H
-#define CURSORBASED_HELPER_H
+#ifndef CURSORBASED_H
+#define CURSORBASED_H
 
 #define MAX 10
 

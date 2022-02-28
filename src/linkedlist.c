@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../inc/ll_helper.h"
+#include "../inc/linkedlist.h"
 
 void ll_display(NodePtr L) {
     for (;L != NULL;L = L->next) {

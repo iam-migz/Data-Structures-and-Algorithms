@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../inc/cb_helper.h"
+#include "../inc/cursorbased.h"
 
 void cb_init(Vheap *vh) {
     int i;
