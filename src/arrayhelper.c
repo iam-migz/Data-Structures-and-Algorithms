@@ -1,5 +1,4 @@
-#ifndef ARRAY_H
-#define ARRAY_H
+#include <stdio.h>
 
 void initialize_array(int elements[], int count) {
     for (int i = 0; i < count; i++) {
@@ -31,6 +30,3 @@ void display_array_list(int elements[], int start_index, int end_index) {
     printf("]");
     printf("\n");
 }
-
-
-#endif

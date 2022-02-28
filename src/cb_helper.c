@@ -1,19 +1,6 @@
-#ifndef CURSORBASED_H
-#define CURSORBASED_H
+#include <stdio.h>
+#include "../inc/cb_helper.h"
 
-#define MAX 10
-
-typedef struct {
-    int elem;
-    int next;
-} Node;
-
-typedef struct {
-    Node elements[MAX];
-    int avail;
-} Vheap;
-
-/* Cursor Based Utility Functions */ 
 void cb_init(Vheap *vh) {
     int i;
     for (i = 0; i < MAX; i++) {
@@ -64,4 +51,3 @@ void cb_populate_list(Vheap *vh, int *list, int array[], int array_size) {
         list = &vh->elements[*list].next;
     }
 }
-#endif

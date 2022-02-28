@@ -1,10 +1,6 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
-
-typedef struct node {
-    int data;
-    struct node *next; 
-} NodeType, *NodePtr;
+#include <stdio.h>
+#include <stdlib.h>
+#include "../inc/ll_helper.h"
 
 void ll_display(NodePtr L) {
     for (;L != NULL;L = L->next) {
@@ -31,5 +27,3 @@ void ll_populate_list(NodePtr *L, int *array, int array_size) {
         L = &(*L)->next;
     }
 }
-
-#endif
