@@ -4,7 +4,7 @@
 #	action
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic
-.PHONY: all clean checklib codes
+.PHONY: all clean checklib libtest
 
 all: libdsa
 
