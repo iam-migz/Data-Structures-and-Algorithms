@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../../Utils/cursorbased.h"
+#include "cursorbased.h"
 
 /*
 typedef struct {
@@ -43,7 +43,7 @@ void delete_all_occurence(Vheap *vh, int *list, int elem) {
         if (vh->elements[*list].elem == elem) {
             temp = *list; 
             *list = vh->elements[*list].next;
-            deallocate_space(vh, temp);
+            cb_deallocate_space(vh, temp);
         } else {
             list = &vh->elements[*list].next;
         }
@@ -54,13 +54,13 @@ int main (){
 
     Vheap vh;
     int list = -1;
-    init(&vh);
+    cb_init(&vh);
     int elements[] = {1,2,3,4,5,6};
-    populate_list(&vh, &list, elements, 6);
+    cb_populate_list(&vh, &list, elements, 6);
 
     int evens = get_even(&vh, &list);
-    visualize(vh);
-    display_list(vh, list);
-    display_list(vh, evens);
+    cb_visualize(vh);
+    cb_display_list(vh, list);
+    cb_display_list(vh, evens);
     return 0;
 }

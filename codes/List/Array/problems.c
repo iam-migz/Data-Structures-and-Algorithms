@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../Utils/array.h"
-
 
 #define MAX  0xA
 

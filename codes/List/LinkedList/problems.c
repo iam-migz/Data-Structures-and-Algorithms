@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../Utils/linkedlist.h"
+#include "linkedlist.h"
 
 /*
 typedef struct node {

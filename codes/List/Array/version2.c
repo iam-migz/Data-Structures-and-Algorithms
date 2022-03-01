@@ -5,7 +5,6 @@ containing an array and count/last
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../Utils/array.h"
 #define MAX 10
 
 typedef struct {

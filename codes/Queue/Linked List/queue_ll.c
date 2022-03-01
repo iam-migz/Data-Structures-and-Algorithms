@@ -1,5 +1,4 @@
-#ifndef QUEUE_LINKEDLIST_H
-#define QUEUE_LINKEDLIST_H
+#include <stdlib.h>
 
 typedef struct node{
     int data;
@@ -53,5 +52,3 @@ int isFull(Queue q) {
 int isEmpty(Queue q) {
     return q.front == NULL ? 1 : 0;
 }
-
-#endif

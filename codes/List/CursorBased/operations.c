@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../../Utils/cursorbased.h"
+#include "cursorbased.h"
 
 /*
 typedef struct {
@@ -15,7 +15,7 @@ typedef struct {
 
 /* Operations */ 
 void insert_first(Vheap *vh, int *list, int elem) {
-    int index = allocate_space(vh);
+    int index = cb_allocate_space(vh);
     if (index != -1) {
         vh->elements[index].elem = elem;
         vh->elements[index].next = *list;
@@ -23,7 +23,7 @@ void insert_first(Vheap *vh, int *list, int elem) {
     }
 }
 void insert_last(Vheap *vh, int *list, int elem) {
-    int index = allocate_space(vh);
+    int index = cb_allocate_space(vh);
     if (index != -1) {
         for (; *list != -1; list = &vh->elements[*list].next) {}
         vh->elements[index].elem = elem;
@@ -34,7 +34,7 @@ void insert_last(Vheap *vh, int *list, int elem) {
 void insert_sorted_unique(Vheap *vh, int *list, int elem) { //asc
     for (;*list != -1 && elem > vh->elements[*list].elem; list = &vh->elements[*list].next){}
     if (*list == -1 || elem != vh->elements[*list].elem) {
-        int index = allocate_space(vh);
+        int index = cb_allocate_space(vh);
         if (index != -1) {
             vh->elements[index].elem = elem;
             vh->elements[index].next = *list;
@@ -46,7 +46,7 @@ void delete_first(Vheap *vh, int *list) {
     if (*list != -1) {
         int temp = *list;
         *list = vh->elements[*list].next;
-        deallocate_space(vh, temp);
+        cb_deallocate_space(vh, temp);
     }
 }
 void delete_last(Vheap *vh, int *list) {
@@ -54,7 +54,7 @@ void delete_last(Vheap *vh, int *list) {
         for (; vh->elements[*list].next != -1; list = &vh->elements[*list].next){}
         int temp = *list;
         *list = -1;
-        deallocate_space(vh, temp);
+        cb_deallocate_space(vh, temp);
     }
 }
 void delete_elem(Vheap *vh, int *list, int elem) {
@@ -63,7 +63,7 @@ void delete_elem(Vheap *vh, int *list, int elem) {
         if (*list != -1) {
             int temp = *list;
             *list = vh->elements[*list].next;
-            deallocate_space(vh, temp);
+            cb_deallocate_space(vh, temp);
         }
     }
 }
@@ -72,14 +72,14 @@ int main (){
 
     Vheap vh;
     int myList = -1;
-    init(&vh);
+    cb_init(&vh);
     insert_first(&vh, &myList, 3);
     insert_first(&vh, &myList, 2);
     insert_first(&vh, &myList, 1);
     insert_last(&vh, &myList, 4);
     delete_elem(&vh, &myList, 4);
-    visualize(vh);
-    display_list(vh, myList);
+    cb_visualize(vh);
+    cb_display_list(vh, myList);
 
     return 0;
 }
