@@ -15,7 +15,7 @@ typedef struct {
 
 void cb_init(Vheap *vh);
 int cb_allocate_space(Vheap *vh);
-int cb_deallocate_space(Vheap *vh, int index);
+void cb_deallocate_space(Vheap *vh, int index);
 void cb_visualize(Vheap vh);
 void cb_display_list(Vheap vh, int list);
 void cb_populate_list(Vheap *vh, int *list, int array[], int array_size);

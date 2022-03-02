@@ -35,7 +35,7 @@ boolean isFoundArray(List L, int elem) {
             the newly created list will be returned to the calling function.
 */ 
 List getEvens(List L) {
-    int i, j, temp;
+    int i, j;
     i = 0;
 
     List evens = (List)malloc(sizeof(struct node));
@@ -43,8 +43,6 @@ List getEvens(List L) {
         evens->last = -1;
         while (i <= L->last) {
             if (L->elem[i] % 2 == 0) {
-                temp = i;
-
                 /*insert sorted in the new list*/  
                 for (j = 0; j <= evens->last && L->elem[i] > evens->elem[j]; j++) {}
                 evens->elem[j] = L->elem[i];

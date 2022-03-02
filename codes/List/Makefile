@@ -1,30 +1,27 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -pedantic
+CFLAGS=-g -Wall -Wextra -pedantic
 INC = ../../inc
 LIB = ../../lib
 
-CB = CursorBased/
-LL = LinkedList/
-.PHONY: print run_cb_problems clean
+CBS_C = $(wildcard CursorBased/*.c)
+CBS_PROGS = $(patsubst %.c,%,$(CBS_C))
 
-print: ; $(info $$exp is [${exp}]) echo migz
+LL_C = $(wildcard LinkedList/*.c)
+LL_PROGS = $(patsubst %.c,%,$(LL_C))
 
+ARRAY_C = $(wildcard Array/*.c)
+ARRAY_PROGS = $(patsubst %.c,%,$(ARRAY_C))
 
-list_example: list_example.c
-	$(CC) $(CFLAGS) list_example.c -ldsa -I $(INC) -L $(LIB) -o list_example
+.PHONY: print clean cursor linked array
 
-# Cursorbased files
-cb_problems: $(CB)problems.c
-	$(CC) $(CFLAGS) $< -ldsa -I $(INC) -L $(LIB) -o $(CB)problems
+cursor: $(CBS_PROGS)
+linked: $(LL_PROGS)
+array: $(ARRAY_PROGS)
 
-cb_operations: $(CB)operations.c
-	$(CC) $(CFLAGS) $< -ldsa -I $(INC) -L $(LIB) -o $(CB)operations
-
-run_cb_problems: cb_problems
-	./$(CB)problems
-
-run_cb_operations: cb_operations
-	./$(CB)operations
+%: %.c
+	$(CC) $(CFLAGS) $< -ldsa -I $(INC) -L $(LIB) -o $@
 
 clean:
-	del Array\*.exe CursorBased\*.exe LinkedList\*.exe
+	del Array\*.exe CursorBased\*.exe LinkedList\*.exe *.exe Array\*.o
+
+print: ; $(info $$ARRAY_O is [$(ARRAY_O)]) echo migz
