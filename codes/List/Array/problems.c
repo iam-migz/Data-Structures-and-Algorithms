@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+ 
 #define MAX  0xA
 
 typedef struct node {
@@ -92,6 +92,6 @@ int *get_intersection(int *A, int *B) {
 
 
 int main() {
-
+    printf("hello world");
     return 0;
 }

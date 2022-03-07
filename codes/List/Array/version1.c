@@ -46,6 +46,6 @@ void delete(List *L, int index) {
 }
 
 int main() {
-
+    printf("hello from version1");
     return 0;
 }

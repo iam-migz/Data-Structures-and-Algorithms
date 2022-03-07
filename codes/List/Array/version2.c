@@ -50,6 +50,6 @@ void make_null(List **L) {
 }
 
 int main() {
-
+    printf("hello from version 2");
     return 0;
 }
