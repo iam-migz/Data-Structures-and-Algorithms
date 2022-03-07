@@ -26,8 +26,16 @@ int stack_is_empty(Stack S) {
     return S.top == -1;
 }
 
-void populate_stack(Stack *S, int array[], int array_size) {
+void stack_populate(Stack *S, int array[], int array_size) {
     for (int i = 0; i < array_size; i++) {
         stack_push(S, array[i]);
+    }
+}
+
+void stack_display(Stack S) {
+    
+    printf("INDX\tDATA\n");
+    for (int i = S.top; i >= 0; i--) {
+        printf("%4d\t%4d\n", i, S.data[i]);
     }
 }

@@ -20,4 +20,6 @@ int stack_is_empty(Stack S);
 
 void stack_populate(Stack *S, int array[], int array_size);
 
+void stack_display(Stack S);
+
 #endif
