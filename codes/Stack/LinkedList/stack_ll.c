@@ -1,13 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack_ll.h"
 
-/*
 typedef struct node{
     int data;
     struct node *next;
 } NodeType, *Stack;
-*/
+
+
+void init_stack(Stack *S) {
+    *S = NULL;
+}
+
+void push(Stack *S, int data) {
+    Stack temp = (Stack)malloc(sizeof(NodeType));
+    if (temp != NULL) {
+        temp->data = data;
+        temp->next = *S;
+        *S = temp;
+    }
+}
+
+void pop(Stack *S) {
+    if (*S != NULL) {
+        Stack temp = *S;
+        *S = (*S)->next;
+        free(temp);
+    }
+}
+
+int top(Stack S) { 
+    return S != NULL ? S->data : -1;
+}
+
+void populate_stack(Stack *S, int array[], int array_size) {
+    for (int i = 0; i < array_size; i++) {
+        push(S, array[i]);
+    }
+}
+
+void display_and_delete_all(Stack *S) {
+    while (*S != NULL) {
+        printf("%d, ", top(*S));
+        pop(S);
+    }
+}
 
 void insert_bottom(Stack *S, int data) {
     Stack temp, new_stack;
@@ -89,16 +125,12 @@ int main() {
     init_stack(&S);
     int sample[] = {10,8,6,4,2};
     populate_stack(&S, sample, 5);
-    // insert_bottom(&S, 5);
     insert_sorted(&S, 11);
     delete_sorted(&S, 11);
     delete_sorted(&S, 6);
     delete_sorted(&S, 2);
     delete_sorted(&S, 4);
     delete_sorted(&S, 10);
-
     display_and_delete_all(&S);
-
-
     return 0;
 }

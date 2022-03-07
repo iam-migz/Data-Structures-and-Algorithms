@@ -1,7 +1,4 @@
-#include "../../Utils/cursorbased.h"
-
-#ifndef QUEUE_CB_H
-#define QUEUE_CB_H
+#include "cursorbased.h"
 
 typedef struct {
     Vheap vh;
@@ -42,7 +39,7 @@ void enqueue(Queue *q, int data) {
     }   
 }
 
-int dequeue(Queue *q) {
+void dequeue(Queue *q) {
     if(!isEmpty(*q)) {
         int temp = q->front;
         q->front = q->vh.elements[temp].next;
@@ -53,7 +50,7 @@ int dequeue(Queue *q) {
     }
 }
 
-int 
+int main() {
 
-
-#endif
+    return 0;
+}

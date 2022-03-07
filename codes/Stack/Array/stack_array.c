@@ -1,6 +1,4 @@
-#ifndef STACK_ARRAY
-#define STACK_ARRAY
-
+#include <stdio.h>
 #define MAX 10
 
 typedef struct {
@@ -46,4 +44,6 @@ void populate_stack(Stack *S, int array[], int array_size) {
     }
 }
 
-#endif
+int main() {
+    return 0;
+}

@@ -15,6 +15,14 @@ void init_queue(Queue *q) {
     q->back = NULL;
 }
 
+int isFull() {
+    return 1;
+}
+
+int isEmpty(Queue q) {
+    return q.front == NULL ? 1 : 0;
+}
+
 void enqueue(Queue *q, int data) {
     NodePtr temp = malloc(sizeof(NodeType));
     if (temp != NULL) {
@@ -45,10 +53,9 @@ int dequeue(Queue *q) {
     return retval;
 }
 
-int isFull(Queue q) {
-    return 1;
-}
 
-int isEmpty(Queue q) {
-    return q.front == NULL ? 1 : 0;
+
+int main() {
+
+    return 0;
 }

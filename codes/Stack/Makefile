@@ -3,7 +3,7 @@ CFLAGS=-g -Wall -Wextra -pedantic
 INC = ../../inc
 LIB = ../../lib
 
-.PHONY: print clean
+.PHONY: clean
 
 %: %.c
 	$(CC) $(CFLAGS) $< -ldsa -I $(INC) -L $(LIB) -o $@
@@ -11,5 +11,3 @@ LIB = ../../lib
 
 clean:
 	del Array\*.exe CursorBased\*.exe LinkedList\*.exe *.exe
-
-print: ; $(info $$ARRAY_O is [$(ARRAY_O)]) echo migz

@@ -88,8 +88,8 @@ char* infix_to_postfix(char *str) {
     
     char *postfix;
     Stack S; 
-    int i, j;
-
+    int j;
+    size_t i;
     postfix = (char*)malloc((strlen(str)+1) * sizeof(char));
     init_stack(&S);
     j = 0;
@@ -118,7 +118,8 @@ char* infix_to_postfix(char *str) {
 int evaluate_postfix(char *postfix) {
     Stack S;
     init_stack(&S);
-    int i, operand_1, operand_2, result;
+    int operand_1, operand_2, result;
+    size_t i;
     for (i = 0; i < strlen(postfix); i++) {
         if(isdigit(postfix[i])) {
             push(&S, postfix[i] - '0'); // char to int

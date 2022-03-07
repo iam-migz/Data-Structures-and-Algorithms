@@ -4,7 +4,7 @@
 #	action
 CC=gcc
 CFLAGS=-g -Wall -Wextra -pedantic
-.PHONY: all clean checklib libtest
+.PHONY: all clean checklib libtest libdsa
 
 all: libdsa
 
@@ -16,6 +16,7 @@ obj/%.o: src/%.c inc/%.h
 
 libtest: libtest.c
 	$(CC) $(CFLAGS) $< -ldsa -I inc -L lib -o $@
+	./$@
 
 checklib:
 	ar t lib/libdsa.a

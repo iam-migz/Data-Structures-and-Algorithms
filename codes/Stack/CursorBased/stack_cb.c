@@ -1,8 +1,8 @@
-#ifndef STACK_CB
-#define STACK_CB
+#include <stdio.h>
+#include "cursorbased.h"
 
 void push(Vheap *vh, int *stack, int elem) {
-    int temp = allocate_space(vh);
+    int temp = cb_allocate_space(vh);
     if (temp != -1) {
         vh->elements[temp].elem = elem;
         vh->elements[temp].next = *stack;
@@ -14,7 +14,7 @@ void pop(Vheap *vh, int *stack) {
     if (*stack != -1) {
         int temp = *stack;
         *stack = vh->elements[*stack].next;        
-        deallocate_space(vh, temp);
+        cb_deallocate_space(vh, temp);
     }
 }
 
@@ -31,5 +31,6 @@ void display_and_delete_all(Vheap *vh, int *stack) {
 }
 
 
-
-#endif
+int main() {
+    return 0;
+}
