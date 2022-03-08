@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-g -Wall -Wextra -pedantic
-INC = ../../inc
-LIB = ../../lib
+INC = ../../libdsa/inc
+LIB = ../../libdsa/lib
 
 .PHONY: print clean
 

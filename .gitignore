@@ -3,3 +3,4 @@
 *.txt
 *.a
 *.o
+libtest.c
