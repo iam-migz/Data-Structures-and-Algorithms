@@ -25,7 +25,7 @@ SET get_intersection(SET A, SET B) {
     return C;
 }
 
-SET get_union_unsorted(SET A, SET B) {
+SET get_union_unsorted(SET A, SET B) { // O(N^2)
     SET C = {.count = 0};
     int i, k;
     // insert elements of set A
@@ -46,8 +46,8 @@ SET get_union_unsorted(SET A, SET B) {
     return C;
 }
 
-SET get_union_sorted(SET A, SET B) {
-    SET C = {.count = 0};
+SET get_union_sorted(SET A, SET B) { // O(N+N) == O(N)
+    SET C = {.count = 0};   
     int a_ctr, b_ctr;
     a_ctr = b_ctr = 0;
 
