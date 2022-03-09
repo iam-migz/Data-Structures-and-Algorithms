@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "array.h"
 
-// Array implementations
+// list implementations
 // doing operations requires traversal 
 // CRUD O(N)
 #define SET_MAX 10
@@ -10,14 +10,15 @@ typedef struct {
     int count;
 } SET;
 
+// unsorted
 SET get_intersection(SET A, SET B) {
     SET C = {.count = 0};
+    int i, k;
+    for (i = 0; i < A.count; i++) {
+        for (k = 0; k < B.count && A.data[i] != B.data[k]; k++) {}
 
-    for (int i = 0; i < A.count; i++) {
-        for (int k = 0; k < B.count; k++) {
-            if (A.data[i] == B.data[k]) {
-                C.data[C.count++] = A.data[i];
-            }
+        if (k < B.count && A.data[i] == B.data[k]) {
+            C.data[C.count++] = A.data[i];
         }
     }
 
@@ -87,6 +88,20 @@ SET get_difference(SET A, SET B) {
     return C;
 }
 
+SET get_merge(SET A, SET B) {
+    SET C = {.count = 0};
+
+    C = get_intersection(A, B);
+    
+    if (C.count == 0) {
+        C = get_union_unsorted(A, B);
+    } else {
+        printf("disjoint set\n");
+        C.count = 0;
+    }
+
+    return C;
+}
 
 
 int main() {
@@ -101,25 +116,30 @@ int main() {
     visualize_array(B.data, B.count);
     printf("\n");
 
-    // SET C = get_intersection(A,B);
-    // printf("A intersection B:\n");
-    // visualize_array(C.data, C.count);
-    // printf("\n");
+    SET C = get_intersection(A,B);
+    printf("A intersection B:\n");
+    visualize_array(C.data, C.count);
+    printf("\n");
 
     // SET D = get_union_unsorted(A,B);
     // printf("A union unsorted B:\n");
     // visualize_array(D.data, D.count);
     // printf("\n");
 
-    SET E = get_union_sorted(A,B);
-    printf("A union sorted B:\n");
-    visualize_array(E.data, E.count);
-    printf("\n");
+    // SET E = get_union_sorted(A,B);
+    // printf("A union sorted B:\n");
+    // visualize_array(E.data, E.count);
+    // printf("\n");
 
-    SET F = get_difference(A,B);
-    printf("A union sorted B:\n");
-    visualize_array(F.data, F.count);
-    printf("\n");
+    // SET F = get_difference(A,B);
+    // printf("A difference B:\n");
+    // visualize_array(F.data, F.count);
+    // printf("\n");
+
+    // SET G = get_merge(A,B);
+    // printf("A merge B:\n");
+    // visualize_array(G.data, G.count);
+    // printf("\n");
 
 
     return 0;

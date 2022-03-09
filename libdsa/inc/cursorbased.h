@@ -1,7 +1,7 @@
 #ifndef CURSORBASED_H
 #define CURSORBASED_H
 
-#define MAX 10
+#define MAX 20
 
 typedef struct {
     int elem;
