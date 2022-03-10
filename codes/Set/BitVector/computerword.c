@@ -7,6 +7,7 @@
 
 // in computer word we use a char datatype to store a set
 // 1 char = 8 bits
+// word size is 8
 // boolean values (0,1)
 // 2^8 = 256 or 0 - 255 values
 
@@ -42,9 +43,10 @@ void display_bitvector(SET x) {
     for (i = 7; i >= 0; i--) {
         printf(" %d ", i);
     }
+    // displaying the bits
     printf("\n%5s: ", "bits");
     int num_bits = (sizeof(x)*8)-1;
-    for (unsigned int mask = 1 << num_bits; mask > 0; mask >>= 1) {
+    for (unsigned int mask = 1 << num_bits; mask > 0; mask >>= 1) { // using bit mask as the counter
         printf(" %d ", (x & mask) ? 1 : 0);
     }
     printf("\n%5s: ", "value");
@@ -76,19 +78,17 @@ void delete_member(SET *A, int pos) {
 
 int main() {
                        
-    int A[] = {1,3,5}; 
-    // int B[] = {1,2,4}; 
-    SET A_bits = array_to_bitvector(A, 3);
-    // SET B_bits = array_to_bitvector(B, 3);
-    int *C = bitvector_to_array(A_bits);
-    visualize_array(C, 8);
+    int A[] = {1,2,3,4,5,6,7}; 
+    int B[] = {1,2,4}; 
+    SET A_bits = array_to_bitvector(A, 7);
+    SET B_bits = array_to_bitvector(B, 3);
     // SET C_bits = get_union(A_bits, B_bits);
     // SET C_bits = get_intersection(A_bits, B_bits);
     // SET C_bits = get_difference(A_bits, B_bits);
     // insert_member(&C_bits, 1);
     // delete_member(&C_bits, 5);
-    // display_bitvector(A_bits);
-    // display_bitvector(B_bits);
+    display_bitvector(A_bits);
+    display_bitvector(B_bits);
     // display_bitvector(C_bits);
 
     return 0;
