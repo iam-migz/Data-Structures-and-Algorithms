@@ -3,36 +3,29 @@
 void queue_init(Queue *q) {
     q->front = 0;
     q->back = SIZE-1;
-    q->count = 0;
 }
 
 int queue_is_full(Queue q) {
-    return q.count == SIZE-1;
+    return (q.back+2)%SIZE == q.front;
 }
 
 int queue_is_empty(Queue q) {
-    return q.count == 0;
+    return (q.back+1)%SIZE == q.front;
 }
 
 void queue_enqueue(Queue *q, int data) {
-    if (!queue_is_full(*q)) {
+    if ((q->back+2)%SIZE != q->front) {
         q->back = (q->back + 1) % SIZE;
-        q->count++;
         q->array[q->back] = data;
     }
 }
 
-int queue_dequeue(Queue *q) {
-    int temp = -1;
-    if (!queue_is_empty(*q)) {
-        q->array[q->front] = -1;
-        temp = q->array[q->front];
+void queue_dequeue(Queue *q) {
+    if ((q->back+1)%SIZE != q->front) {
         q->front = (q->front + 1) % SIZE;
-        q->count--;
     }
-    return temp;
 }
 
 int queue_front(Queue q) {
-    return q.count != 0 ? q.array[q.front] : -1;
+    return (q.back+1)%SIZE != q.front ? q.array[q.front] : -1;
 }

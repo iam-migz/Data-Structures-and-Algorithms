@@ -10,4 +10,4 @@ LIB = ../../libdsa/lib
 	./$@	
 
 clean:
-	del Array\*.exe CursorBased\*.exe LinkedList\*.exe *.exe
+	del Array\*.exe CursorBased\*.exe LinkedList\*.exe BitVector\*.exe
