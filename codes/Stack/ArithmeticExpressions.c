@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "./Array/stack_array.h"
+#include "stack.h"
 
 /*
 #define MAX 10
@@ -91,24 +91,24 @@ char* infix_to_postfix(char *str) {
     int j;
     size_t i;
     postfix = (char*)malloc((strlen(str)+1) * sizeof(char));
-    init_stack(&S);
+    stack_init(&S);
     j = 0;
 
     for (i = 0; i < strlen(str); i++) {
         if (isdigit(str[i])) {
             postfix[j++] = str[i];        
         } else {
-            while (!is_empty(S) && higher_precedence(top(S), str[i])) { 
-                postfix[j++] = top(S);
-                pop(&S);
+            while (!stack_is_empty(S) && higher_precedence(stack_top(S), str[i])) { 
+                postfix[j++] = stack_top(S);
+                stack_pop(&S);
             }
-            push(&S, str[i]);
+            stack_push(&S, str[i]);
         }
     }
 
-    while (!is_empty(S)) {
-        postfix[j++] = top(S);
-        pop(&S);
+    while (!stack_is_empty(S)) {
+        postfix[j++] = stack_top(S);
+        stack_pop(&S);
     }
 
     postfix[j] = '\0';
@@ -117,17 +117,17 @@ char* infix_to_postfix(char *str) {
 
 int evaluate_postfix(char *postfix) {
     Stack S;
-    init_stack(&S);
+    stack_init(&S);
     int operand_1, operand_2, result;
     size_t i;
     for (i = 0; i < strlen(postfix); i++) {
         if(isdigit(postfix[i])) {
-            push(&S, postfix[i] - '0'); // char to int
+            stack_push(&S, postfix[i] - '0'); // char to int
         } else {
-            operand_2 = top(S);
-            pop(&S);
-            operand_1 = top(S);
-            pop(&S);
+            operand_2 = stack_top(S);
+            stack_pop(&S);
+            operand_1 = stack_top(S);
+            stack_pop(&S);
             switch (postfix[i]) {
                 case '+':
                     result = operand_1 + operand_2;
@@ -144,11 +144,11 @@ int evaluate_postfix(char *postfix) {
                 default: 
                     break;
             }
-            push(&S, result);
+            stack_push(&S, result);
         }
     }
 
-    return top(S);
+    return stack_top(S);
 }
 
 

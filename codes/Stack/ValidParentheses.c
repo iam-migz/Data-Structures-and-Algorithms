@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "./Array/stack_array.h"
+#include "stack.h"
 
 /*
 #define MAX 10
@@ -29,22 +29,21 @@ int is_valid_pair(char a, char b) {
 
 int valid_parentheses(char *str) {
     Stack S;
-    init_stack(&S);
+    stack_init(&S);
     
     for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == '[' || str[i] == '(' || str[i] == '{') {
-            push(&S, str[i]);
+            stack_push(&S, str[i]);
         } else if(str[i] == ']' || str[i] == ')' || str[i] == '}') {
-            
-            if (is_empty(S) && !is_valid_pair(top(S), str[i])) {
+            if (stack_is_empty(S) && !is_valid_pair(stack_top(S), str[i])) {
                 return 0;
             } else {
-                pop(&S);
+                stack_pop(&S);
             }
         }
     }
     
-    return is_empty(S) ? 0 : 1;
+    return stack_is_empty(S) == 1 ? 1 : 0;
 }
 
 
