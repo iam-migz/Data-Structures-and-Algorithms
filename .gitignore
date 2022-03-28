@@ -4,3 +4,4 @@
 *.a
 *.o
 libtest.c
+sandbox.c
