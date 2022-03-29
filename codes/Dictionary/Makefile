@@ -10,4 +10,4 @@ LIB = ../../libdsa/lib
 	./$@	
 
 clean:
-	del Array\*.exe CursorBased\*.exe LinkedList\*.exe *.exe
+	del CloseHashing\*.exe OpenHashing\*.exe Practice\*.exe *.exe
