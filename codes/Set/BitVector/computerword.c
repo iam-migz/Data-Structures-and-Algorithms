@@ -75,7 +75,10 @@ void insert_member(SET *A, int pos) {
 void delete_member(SET *A, int pos) {
     *A = *A & ~(1 << pos);
 }
-
+int is_member(SET A, int pos) {
+    char mask = 1 << pos;
+    return (A & mask) == 0 ? 0 : 1;
+}
 int main() {
                        
     int A[] = {1,2,3,4,5,6,7}; 
@@ -89,6 +92,8 @@ int main() {
     // delete_member(&C_bits, 5);
     display_bitvector(A_bits);
     display_bitvector(B_bits);
+    printf("\n");
+    printf("is 6 a member of A?: %d\n", is_member(A_bits, 6));
     // display_bitvector(C_bits);
 
     return 0;
