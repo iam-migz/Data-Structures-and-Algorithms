@@ -38,7 +38,7 @@ void insert(Dict D, int num) {
         if (*trav != NULL) {
             (*trav)->data = num;
         }
-    }
+    }       
 }
 
 void delete(Dict D, int num) {

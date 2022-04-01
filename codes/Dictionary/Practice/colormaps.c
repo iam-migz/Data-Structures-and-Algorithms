@@ -1,4 +1,5 @@
 // Closed Hashing (Progressive Overflow)
+// -kind of like chaining implemented in cursorbased environment.
 #include <stdio.h>
 #include <string.h>
 #include <windows.h>
@@ -39,7 +40,7 @@ void init_Dict(Dictionary *D) {
 
     // initialize the synonyms
     for (i = D->avail; i < SIZE-1; i++) {
-        D->data[i].value.id = EMPTY;
+        D->data[i].value.id = EMPTY; // no need to make empty
         D->data[i].next = i+1;
     }
     D->data[SIZE-1].next = -1;
@@ -57,7 +58,7 @@ void Set2Dict(Dictionary *D, Color SET[], int set_count) {
     int i, *k, temp, hash;
     for (i = 0; i < set_count; i++) {
         hash = hash_func(SET[i].color_name);
-        if (D->data[hash].value.id == EMPTY) {
+        if (D->data[hash].value.id == EMPTY) { // or deleted
             D->data[hash].value = SET[i];
         } else {
             for (k = &D->data[hash].next; *k != -1 && D->data[*k].value.id != EMPTY; k = &D->data[*k].next) {}
