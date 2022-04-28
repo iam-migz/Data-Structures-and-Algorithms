@@ -36,8 +36,7 @@ int rightmost(Tree T, int root) { // ?? ~ O(#elems)
     if (T.data[trav->data] == NULL) {
         return trav->data;
     }
-    rightmost(T, trav->data);
-    __builtin_unreachable();
+    return rightmost(T, trav->data);
 }
 
 void preorder(Tree T, int root) { // ? ~ O(#elems)

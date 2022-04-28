@@ -33,8 +33,8 @@ int rightmost(Tree T, int root) { // ? O(N * Level)
     if (r == -1) {
         return root;
     }
-    rightmost(T, r);
-    __builtin_unreachable();
+    return rightmost(T, r);
+    // __builtin_unreachable();
 }
 void preorder(Tree T, int root) { // ? O(N * #elems)
     printf("%d ", root);

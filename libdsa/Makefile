@@ -8,7 +8,7 @@ CFLAGS=-g -Wall -Wextra -pedantic
 
 all: libdsa
 
-libdsa: obj/array.o obj/cursorbased.o obj/linkedlist.o obj/stack.o obj/queue.o
+libdsa: obj/array.o obj/cursorbased.o obj/linkedlist.o obj/stack.o obj/queue.o obj/BST.o
 	ar -rc lib/libdsa.a $^
 
 obj/%.o: src/%.c inc/%.h
