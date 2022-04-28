@@ -10,4 +10,4 @@ LIB = ../../libdsa/lib
 	./$@	
 
 clean:
-	del GenericTree\*.exe
+	del GenericTree\*.exe BinarySearchTree\*.exe Heap\*.exe
