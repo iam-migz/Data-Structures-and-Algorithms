@@ -100,36 +100,33 @@ void postorder(BST B) {
         printf("%d ", B->elem);
     }
 }
-
+int get_max_num(int a, int b) {
+    return a > b ? a : b;
+}
+int get_height(BST B) {
+    if (B == NULL) {
+        return -1; 
+    }
+    return get_max_num(get_height(B->LC)+1, get_height(B->RC)+1);
+}
+// given a sorted array convert it to a balanced tree, O(N)
+void array_to_BST(BST *B, int array[], int left, int right){
+    if (left <= right){
+        int mid = (left+right)/2;
+        *B = (BST)calloc(1, sizeof(NodeType));
+        if (*B != NULL) {
+            (*B)->elem = array[mid];
+            array_to_BST(&(*B)->LC, array, left, mid-1);
+            array_to_BST(&(*B)->RC, array, mid+1, right);
+        } 
+    }
+}   
 
 int main() {
-
     BST myBST = NULL;
-    insert(&myBST, 10);
-    insert(&myBST, 5);
-    insert(&myBST, 12);
-    insert(&myBST, 1);
-    insert(&myBST, 8);
-    insert(&myBST, 11);
-    insert(&myBST, 14);
-
-    printf("preorder: ");
-    preorder(myBST);
-    printf("\n");
-
-    printf("inorder: ");
-    inorder(myBST);
-    printf("\n");
-
-    printf("postorder: ");
-    postorder(myBST);
-    printf("\n");
-    
-    // delete(&myBST, 5);
-    // printf("is 4 a member of the BST: %s\n", member(myBST, 4)==1?"YES":"NO");
-    // printf("Maximum is %d\n", get_max(myBST));
-    // printf("Minimum is %d\n", get_min(myBST));
-    print_tree(myBST, 1);
+    array_to_BST(&myBST, (int[]){1,3,5,7,8,10}, 0, 5);
+    // print_tree(myBST, 1);
+    printf("height of tree is %d", get_height(myBST));
     destroy_tree(&myBST);
     return 0;
 }
