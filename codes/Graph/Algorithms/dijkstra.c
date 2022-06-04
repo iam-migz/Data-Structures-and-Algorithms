@@ -1,3 +1,11 @@
+/*
+    Edsger Dijkstra
+    Single Source Shortest Paths
+    Running Time:
+    Adj. Matrix: O(n2)
+    Adj. List with a priority queue: O(elogn)
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,24 +14,20 @@
 
 typedef int Graph[MAX_VERTEX][MAX_VERTEX];
 
-int *dijkstra(Graph G, int source) {
+int *dijkstra(Graph G, int source, int vertices[]) {
 
-    // 1. distance, visited, vertices
+    // 1. A bit-vector implementation of set
+    int visited[MAX_VERTEX] = {0};
+
+    // 2. initialize distance, set the edges of source vertex & mark it as visited
     int *distance = (int*)malloc(MAX_VERTEX * sizeof(int));
     if (distance == NULL) return NULL;
 
-    int visited[MAX_VERTEX] = {0};
-
-    int vertices[MAX_VERTEX] = {0,1,2,3,4,5};
-
-
-    // 2. set the edges of source vertex & mark it as visited
     for (int i = 0; i < MAX_VERTEX; i++) 
         distance[i] = G[source][i];
 
     visited[source] = 1;
-    distance[source] = 0;
-
+ 
     int next_vertex = source;
     for (int i = 1; i < MAX_VERTEX; i++) {
         int min_distance = INF;
@@ -45,6 +49,7 @@ int *dijkstra(Graph G, int source) {
             }
         }
     }
+    distance[source] = 0;
     return distance;
 }
 
@@ -62,7 +67,8 @@ int main() {
         {INF,INF,  4,  1,  1,INF}
     }; 
 
-    int *distance = dijkstra(G, 0);
+    int vertices[MAX_VERTEX] = {0,1,2,3,4,5};
+    int *distance = dijkstra(G, 0, vertices);
     for (int i = 0; i < MAX_VERTEX; i++) 
         printf("%d ", distance[i]);
     free(distance);

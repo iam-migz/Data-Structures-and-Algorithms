@@ -10,4 +10,4 @@ LIB = ../../libdsa/lib
 	./$@	
 
 clean:
-	del BFS\*.exe DFS\*.exe *.exe
+	del BFS\*.exe DFS\*.exe *.exe Algorithms\*.exe

@@ -1,6 +1,4 @@
 #include <stdio.h>
-
-
 #define INF 9999
 #define MAX_VERTEX 9
 
