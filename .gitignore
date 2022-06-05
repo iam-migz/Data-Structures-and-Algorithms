@@ -1,6 +1,5 @@
 *.exe
 .vscode
-*.txt
 *.a
 *.o
 libtest.c
