@@ -1,0 +1,21 @@
+=================================================
+Cursor Representation/Edge list
+vertex list and edgelist
+Space: O(|V|+|E|) 
+Time: 
+        Finding Adjacent Nodes: O(|E|)
+        Check Connected Nodes : O(|E|)
+=================================================
+Adjacency List - Open Hashing Implementation
+Space: O(|E| + |V|) 
+Time: 
+        Finding Adjacent Nodes: O(|V|)
+        Check Connected Nodes : O(|V|)
+=================================================
+Adjacency Matrix
+vertex list and matrix
+Space: O(|V|*|V|) 
+Time: 
+        Finding Adjacent Nodes: O(|V|)
+        Check Connected Nodes : O(|1|)
+=================================================
