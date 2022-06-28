@@ -1,3 +1,5 @@
+// an array of 1's and 0's to represent a set
+
 // pros - time-complexity
 // 1. CRUD O(1)
 // 2. union, intersection, difference O(N)
@@ -36,6 +38,18 @@ void delete_member(SET A, int pos) {
     A[pos] &= 0;
 }
 
+char arrayBV_to_8bits(int A[]) {
+  char c = 0;
+  unsigned int mask = 1;
+  for(int i = 0; i < MAX; i++) {
+    if (A[i] == true) {
+      c = c | mask;
+    }
+    mask = mask << 1; 
+  }
+  return c;
+}
+
 // p's way, where C is a pointer to an array. an array is a pointer to it's first component
 // so C is a pointer to a pointer to the first component.
 SET* get_union(SET A, SET B) {
@@ -70,14 +84,7 @@ int main() {
     SET A;
     init_set(A);
     create_set(A, (int[]){0,3,5,7}, 4);
-
-    SET B;
-    init_set(B);
-    create_set(B, (int[]){2,3,4,5}, 4);
-
-
-    int* C = get_difference(A, B);
-    visualize_array(C, MAX);
-    free(C);
+    printf("\n\nArray BitVector\n");
+    visualize_array(A, MAX);
     return 0;
 }

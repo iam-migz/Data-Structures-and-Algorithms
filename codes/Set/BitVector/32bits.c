@@ -1,8 +1,10 @@
+// using an integer (32 bits) to store a set
+
 #include <stdio.h>
 #include <stdint.h>
 
 
-void display_bits(int32_t x){
+void display_32bits(int32_t x){
     int32_t num_bits = (sizeof(int32_t)*8)-1;
     int mask;
     for (int i = 0; i <= num_bits; i++) { // we can't use bit mask as a counter, it's not big enough
@@ -37,9 +39,10 @@ int main() {
 
     insert_member(set, 33);
     delete_member(set, 33);
-    display_bits(set[0]);
-    display_bits(set[1]);
-    display_bits(set[2]);
+    insert_member(set, 22);
+    display_32bits(set[0]);
+    display_32bits(set[1]);
+    display_32bits(set[2]);
     return 0;
 }
 
